@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 # Sample product data
 products = {
     "Men": [
-        {"name": "Men's T-Shirt", "price": 20, "image": "men_tshirt.jpg"},
+        {"name": "Men's Shirt", "price": 25, "image": "men_shirt.jpg"},
         {"name": "Men's Jeans", "price": 40, "image": "men_jeans.jpg"},
         {"name": "Men's Jacket", "price": 60, "image": "men_jacket.jpg"},
         {"name": "Men's Shoes", "price": 50, "image": "men_shoes.jpg"},
@@ -14,7 +14,7 @@ products = {
     "Women": [
         {"name": "Women's Dress", "price": 30, "image": "women_dress.jpg"},
         {"name": "Women's Skirt", "price": 25, "image": "women_skirt.jpg"},
-        {"name": "Women's Blouse", "price": 35, "image": "women_blouse.jpg"},
+        {"name": "Women's Jacket", "price": 35, "image": "women_jacket.jpg"},
         {"name": "Women's Shoes", "price": 45, "image": "women_shoes.jpg"},
         {"name": "Women's Bag", "price": 50, "image": "women_bag.jpg"}
     ],
@@ -31,23 +31,24 @@ class BillingApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Fashion and Retail Billing App")
-
-        self.frame = ttk.Frame(self.root)
-        self.frame.pack(padx=10, pady=10)
-
-        self.category_var = tk.StringVar(value="Men")
+        self.root.geometry("800x600")
         self.create_widgets()
 
     def create_widgets(self):
-        # Category selection
-        ttk.Label(self.frame, text="Select Category:").grid(row=0, column=0, padx=5, pady=5)
-        categories = ["Men", "Women", "Kids"]
-        for idx, category in enumerate(categories):
-            ttk.Radiobutton(self.frame, text=category, variable=self.category_var, value=category, command=self.update_products).grid(row=0, column=idx + 1, padx=5, pady=5)
+        # Frame for category selection
+        self.category_frame = ttk.Frame(self.root, padding="10")
+        self.category_frame.pack(side=tk.TOP, fill=tk.X)
 
-        # Product display
-        self.product_frame = ttk.Frame(self.frame)
-        self.product_frame.grid(row=1, column=0, columnspan=4, pady=10)
+        # Category selection
+        self.category_var = tk.StringVar(value="Men")
+        ttk.Label(self.category_frame, text="Select Category:").pack(side=tk.LEFT, padx=5)
+        categories = ["Men", "Women", "Kids"]
+        for category in categories:
+            ttk.Radiobutton(self.category_frame, text=category, variable=self.category_var, value=category, command=self.update_products).pack(side=tk.LEFT, padx=5)
+
+        # Frame for displaying products
+        self.product_frame = ttk.Frame(self.root, padding="10")
+        self.product_frame.pack(fill=tk.BOTH, expand=True)
 
         self.update_products()
 
@@ -58,15 +59,18 @@ class BillingApp:
 
         category = self.category_var.get()
         for idx, product in enumerate(products[category]):
-            img = Image.open(product["image"]).resize((100, 100), Image.ANTIALIAS)
+            img = Image.open(product["image"]).resize((150, 150), Image.ANTIALIAS)
             img = ImageTk.PhotoImage(img)
-            ttk.Label(self.product_frame, image=img).grid(row=idx, column=0, padx=5, pady=5)
-            ttk.Label(self.product_frame, text=product["name"]).grid(row=idx, column=1, padx=5, pady=5)
-            ttk.Label(self.product_frame, text=f"${product['price']}").grid(row=idx, column=2, padx=5, pady=5)
-            ttk.Button(self.product_frame, text="Add to Cart", command=lambda p=product: self.add_to_cart(p)).grid(row=idx, column=3, padx=5, pady=5)
+            img_label = ttk.Label(self.product_frame, image=img)
+            img_label.image = img  # Keep a reference to avoid garbage collection
+            img_label.grid(row=idx, column=0, padx=10, pady=10)
+            
+            ttk.Label(self.product_frame, text=product["name"], font=("Arial", 12)).grid(row=idx, column=1, padx=10, pady=10)
+            ttk.Label(self.product_frame, text=f"${product['price']}", font=("Arial", 12)).grid(row=idx, column=2, padx=10, pady=10)
+            ttk.Button(self.product_frame, text="Add to Cart", command=lambda p=product: self.add_to_cart(p)).grid(row=idx, column=3, padx=10, pady=10)
 
     def add_to_cart(self, product):
-        # Here, you can implement the functionality to add the product to the cart
+        # For now, just print the product added
         print(f"Added {product['name']} to cart!")
 
 if __name__ == "__main__":
