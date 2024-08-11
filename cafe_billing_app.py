@@ -3,16 +3,11 @@ import pandas as pd
 
 # Sample menu items
 menu_items = {
-    "Coffee": 30.00 rs,
-    "Tea": 25.00 rs,
-    "Juice": 135.00 rs,
-    "Chocolate shake": 185.00 rs,
-    "Sandwich": 175.00 rs,
-    "Pudding": 250.00 rs,
-    "Pasta": 390.00 rs,
-    "Pizza (small)": 250.00 rs,
-    "Pizza (medium)": 340.00 rs,
-    "Pizza (large)": 450.00 rs,
+    "Coffee": 3.00,
+    "Tea": 2.50,
+    "Sandwich": 5.00,
+    "Cake": 4.00,
+    "Juice": 3.50
 }
 
 def main():
