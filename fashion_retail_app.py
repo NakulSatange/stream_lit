@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
 
 # Sample product data
@@ -47,7 +47,6 @@ class BillingApp:
         self.root = root
         self.root.title('Fashion Retail Billing App')
         self.root.geometry('1200x800')
-        self.root.resizable(True, True)
 
         self.cart = []
 
@@ -121,10 +120,10 @@ class BillingApp:
 
     def checkout(self):
         if not self.cart:
-            tk.messagebox.showinfo('Checkout', 'Your cart is empty!')
+            messagebox.showinfo('Checkout', 'Your cart is empty!')
             return
         total_price = sum(product['price'] for product in self.cart)
-        tk.messagebox.showinfo('Checkout', f'Your total amount is ${total_price:.2f}. Thank you for shopping with us!')
+        messagebox.showinfo('Checkout', f'Your total amount is ${total_price:.2f}. Thank you for shopping with us!')
         self.cart.clear()
         self.update_cart()
 
