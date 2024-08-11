@@ -1,28 +1,30 @@
 import streamlit as st
 import pandas as pd
+from PIL import Image
 
-# Sample menu items
+# Define product details
 menu_items = {
-    "Coffee": 3.00,
-    "Tea": 2.50,
-    "Sandwich": 5.00,
-    "Cake": 4.00,
-    "Juice": 3.50
+    "Coffee": {"price": 3.00, "image": "images/coffee.jpg"},
+    "Tea": {"price": 2.50, "image": "images/tea.jpg"},
+    "Sandwich": {"price": 5.00, "image": "images/sandwich.jpg"},
+    "Cake": {"price": 4.00, "image": "images/cake.jpg"},
+    "Juice": {"price": 3.50, "image": "images/juice.jpg"}
 }
 
 def main():
-    st.title("Cafe Billing App")
+    st.title("Cafe Billing System")
 
+    # Display menu with images
     st.sidebar.header("Menu")
-    # Display the menu items in the sidebar
-    for item, price in menu_items.items():
-        st.sidebar.write(f"{item}: ${price:.2f}")
+    for item, details in menu_items.items():
+        img = Image.open(details["image"])
+        st.sidebar.image(img, use_column_width=True, caption=item)
+        st.sidebar.write(f"{item}: ${details['price']:.2f}")
 
     st.sidebar.header("Order")
-    # Create a form for the user to input the quantity of each item
     order_form = st.sidebar.form(key='order_form')
     quantities = {}
-    for item in menu_items.keys():
+    for item, details in menu_items.items():
         quantity = order_form.number_input(f"Quantity of {item}", min_value=0, key=item)
         quantities[item] = quantity
 
@@ -30,12 +32,12 @@ def main():
 
     if submit_button:
         # Calculate the total bill
-        total = sum(menu_items[item] * quantities[item] for item in menu_items)
+        total = sum(details["price"] * quantities[item] for item, details in menu_items.items())
         st.write("### Order Summary")
         st.write("**Items Ordered:**")
         for item, quantity in quantities.items():
             if quantity > 0:
-                st.write(f"{item}: {quantity} @ ${menu_items[item]:.2f} each")
+                st.write(f"{item}: {quantity} @ ${menu_items[item]['price']:.2f} each")
 
         st.write(f"**Total Bill:** ${total:.2f}")
 
