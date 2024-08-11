@@ -3,9 +3,9 @@ import streamlit as st
 # Sample data for the fashion categories
 fashion_data = {
     'Men': [
-        {'name': 'Elegant Suit', 'price': '$299', 'image': 'https://via.placeholder.com/300x200?text=Men+Suit'},
-        {'name': 'Casual Shirt', 'price': '$49', 'image': 'https://via.placeholder.com/300x200?text=Casual+Shirt'},
-        {'name': 'Leather Jacket', 'price': '$199', 'image': 'https://via.placeholder.com/300x200?text=Leather+Jacket'}
+        {'name': 'Elegant Suit', 'price': '$299', 'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_U8FMeETZeIqzfnJQ4RiZ0iA-0yQpm8pN-Q&s'},
+        {'name': 'Casual Shirt', 'price': '$49', 'image': 'https://bahujanmarket.com/public/uploads/all/wlBILY02xoCi0WUk6PVTnkDwBdxZKPZZV9sRS8b0.jpg'},
+        {'name': 'Leather Jacket', 'price': '$199', 'image': 'https://assets.ajio.com/medias/sys_master/root/20231111/bu5e/654f9f06afa4cf41f5842ece/-473Wx593H-410393594-02o-MODEL.jpg'}
     ],
     'Women': [
         {'name': 'Evening Gown', 'price': '$399', 'image': 'https://via.placeholder.com/300x200?text=Evening+Gown'},
