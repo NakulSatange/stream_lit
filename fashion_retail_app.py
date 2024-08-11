@@ -1,54 +1,50 @@
 import streamlit as st
 
-# Define a function to display content for each category
-def display_category_content(category):
-    if category == 'Men':
-        st.image('https://example.com/men_fashion.jpg', use_column_width=True)
-        st.write("""
-        ## Men's Fashion
-        Discover the latest trends in men's fashion including suits, casual wear, and accessories.
-        Explore our curated collections designed to keep you looking sharp and stylish.
-        """)
-        st.write("- **Suits**: Tailored to perfection.")
-        st.write("- **Casual Wear**: Comfortable and trendy.")
-        st.write("- **Accessories**: Complete your look with our range of accessories.")
+# Sample data for the fashion categories
+fashion_data = {
+    'Men': [
+        {'name': 'Elegant Suit', 'price': '$299', 'image': 'https://via.placeholder.com/300x200?text=Men+Suit'},
+        {'name': 'Casual Shirt', 'price': '$49', 'image': 'https://via.placeholder.com/300x200?text=Casual+Shirt'},
+        {'name': 'Leather Jacket', 'price': '$199', 'image': 'https://via.placeholder.com/300x200?text=Leather+Jacket'}
+    ],
+    'Women': [
+        {'name': 'Evening Gown', 'price': '$399', 'image': 'https://via.placeholder.com/300x200?text=Evening+Gown'},
+        {'name': 'Summer Dress', 'price': '$79', 'image': 'https://via.placeholder.com/300x200?text=Summer+Dress'},
+        {'name': 'Trendy Handbag', 'price': '$129', 'image': 'https://via.placeholder.com/300x200?text=Handbag'}
+    ],
+    'Kids': [
+        {'name': 'Playful T-Shirt', 'price': '$29', 'image': 'https://via.placeholder.com/300x200?text=Kids+T-Shirt'},
+        {'name': 'Cute Dress', 'price': '$59', 'image': 'https://via.placeholder.com/300x200?text=Kids+Dress'},
+        {'name': 'Comfy Sneakers', 'price': '$89', 'image': 'https://via.placeholder.com/300x200?text=Kids+Sneakers'}
+    ]
+}
+
+# Function to display fashion items
+def display_fashion_items(category):
+    st.header(f'{category} Fashion')
+    items = fashion_data.get(category, [])
     
-    elif category == 'Women':
-        st.image('https://example.com/women_fashion.jpg', use_column_width=True)
-        st.write("""
-        ## Women's Fashion
-        From elegant dresses to casual wear, find the perfect outfit for any occasion.
-        Browse through our diverse collection and embrace the latest fashion trends.
-        """)
-        st.write("- **Dresses**: Stylish and versatile.")
-        st.write("- **Casual Wear**: Comfortable and chic.")
-        st.write("- **Accessories**: Add a touch of glamour with our accessories.")
+    for item in items:
+        st.image(item['image'], caption=item['name'], use_column_width=True)
+        st.write(f"**{item['name']}** - {item['price']}")
+        st.write("---")
+
+# Streamlit app layout
+def main():
+    st.title('Fashion and Retail App')
     
-    elif category == 'Kids':
-        st.image('https://example.com/kids_fashion.jpg', use_column_width=True)
-        st.write("""
-        ## Kids' Fashion
-        Fun and practical clothing for children of all ages. Discover playful designs and durable fabrics.
-        """)
-        st.write("- **Playwear**: Comfortable and durable for active kids.")
-        st.write("- **Special Occasion Wear**: Stylish outfits for special events.")
-        st.write("- **Accessories**: Fun and practical accessories for kids.")
+    st.sidebar.title('Select Category')
+    category = st.sidebar.selectbox(
+        'Choose a category',
+        options=['Men', 'Women', 'Kids']
+    )
+    
+    display_fashion_items(category)
+    
+    st.markdown("""
+    ---
+    Created with ❤️ by Your Fashion Team
+    """)
 
-# Set the title of the app
-st.title('Fashion and Retail App')
-
-# Sidebar for category selection
-st.sidebar.title('Select Category')
-category = st.sidebar.selectbox(
-    'Choose a category',
-    options=['Men', 'Women', 'Kids']
-)
-
-# Display the selected category's content
-display_category_content(category)
-
-# Add a footer
-st.markdown("""
----
-Created with ❤️ by Your Fashion Team
-""")
+if __name__ == "__main__":
+    main()
