@@ -1,27 +1,73 @@
-from flask import Flask, render_template, request
-import sqlite3
+import streamlit as st
 
-app = Flask(__name__)
-
-# Sample data for demonstration
+# Sample product data
 products = [
-    {'id': 1, 'name': 'Men T-Shirt', 'category': 'men', 'price': 19.99, 'image': 'path_to_image1.jpg'},
-    {'id': 2, 'name': 'Women Dress', 'category': 'women', 'price': 49.99, 'image': 'path_to_image2.jpg'},
-    {'id': 3, 'name': 'Unisex Hat', 'category': 'unisex', 'price': 15.99, 'image': 'path_to_image3.jpg'}
+    {
+        "name": "T-shirt",
+        "category": "Men",
+        "description": "A comfortable cotton T-shirt.",
+        "image": "https://example.com/men_tshirt.jpg"  # Replace with a valid image URL or path
+    },
+    {
+        "name": "Dress",
+        "category": "Women",
+        "description": "A stylish summer dress.",
+        "image": "https://example.com/women_dress.jpg"  # Replace with a valid image URL or path
+    },
+    {
+        "name": "Jeans",
+        "category": "Men",
+        "description": "Classic blue jeans.",
+        "image": "https://example.com/men_jeans.jpg"  # Replace with a valid image URL or path
+    },
+    {
+        "name": "Skirt",
+        "category": "Women",
+        "description": "A knee-length skirt.",
+        "image": "https://example.com/women_skirt.jpg"  # Replace with a valid image URL or path
+    },
+    {
+        "name": "Kids T-shirt",
+        "category": "Kids",
+        "description": "A playful T-shirt for kids.",
+        "image": "https://example.com/kids_tshirt.jpg"  # Replace with a valid image URL or path
+    },
+    {
+        "name": "Kids Shorts",
+        "category": "Kids",
+        "description": "Comfortable shorts for kids.",
+        "image": "https://example.com/kids_shorts.jpg"  # Replace with a valid image URL or path
+    },
 ]
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+# App title
+st.title("Fashion Brand Product Search")
 
-@app.route('/search', methods=['POST'])
-def search():
-    query = request.form.get('query').lower()
-    category = request.form.get('category').lower()
+# Filter options
+st.sidebar.header("Filter Options")
+category_filter = st.sidebar.selectbox("Select Category", ["All", "Men", "Women", "Kids"])
 
-    results = [product for product in products if query in product['name'].lower() and category in product['category']]
-    
-    return render_template('search_results.html', products=results, query=query)
+# Search bar
+search_query = st.text_input("Search for a product")
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# Filter products based on the selected category
+if category_filter != "All":
+    filtered_products = [product for product in products if product["category"] == category_filter]
+else:
+    filtered_products = products
+
+# Display the results
+if search_query:
+    search_results = [product for product in filtered_products if search_query.lower() in product["name"].lower()]
+else:
+    search_results = filtered_products
+
+if search_results:
+    for product in search_results:
+        st.subheader(product["name"])
+        st.image(product["image"], width=250)
+        st.text(product["description"])
+else:
+    st.write("No products found.")
+
+# Run the Streamlit app with: streamlit run <script_name>.py
