@@ -27,16 +27,16 @@ products = {
         {"name": "Chinos", "price": "$55", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi3hOQSb6JKwij_BtJ224SBCwexuPT6HWBLFnhR-vG1Zkp7XGF1E0N76ypZaQA"},
     ],
     "Kids": [
-        {"name": "T-Shirt", "price": "$15", "image": "https://via.placeholder.com/150?text=T-Shirt"},
-        {"name": "Jeans", "price": "$25", "image": "https://via.placeholder.com/150?text=Jeans"},
-        {"name": "Sweater", "price": "$20", "image": "https://via.placeholder.com/150?text=Sweater"},
-        {"name": "Jacket", "price": "$40", "image": "https://via.placeholder.com/150?text=Jacket"},
-        {"name": "Shorts", "price": "$18", "image": "https://via.placeholder.com/150?text=Shorts"},
-        {"name": "Sneakers", "price": "$30", "image": "https://via.placeholder.com/150?text=Sneakers"},
-        {"name": "Dress", "price": "$25", "image": "https://via.placeholder.com/150?text=Dress"},
-        {"name": "Overalls", "price": "$28", "image": "https://via.placeholder.com/150?text=Overalls"},
-        {"name": "Cap", "price": "$10", "image": "https://via.placeholder.com/150?text=Cap"},
-        {"name": "Raincoat", "price": "$35", "image": "https://via.placeholder.com/150?text=Raincoat"},
+        {"name": "T-Shirt", "price": "$15", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdyMcqxjR06z9RXBLPLQHlebdejrS58cWZhETp-DuoaF5gyjXKvHXbnNNQdzqt"},
+        {"name": "Jeans", "price": "$25", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDtb-nUnHg0FBhISoK1z98AGyKnprk-e2KXSIW3N9ZM9Yh-jj50Pqrjd_vzJIY"},
+        {"name": "Sweater", "price": "$20", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRo5FldwoZ3q6Pi6dkruOsbqkZdA0it2878jCYEJUIS88CbhHAJz8WmXNAZPs_U"},
+        {"name": "Jacket", "price": "$40", "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSyB1Nh_4GOHuQda8EMSnVDsQyiT1VXWA_pvqZVHg4fzJasoB8sSX72PeFxOuIb"},
+        {"name": "Shorts", "price": "$18", "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSOK2gd7Ha7Y3IOaK5NdNhC0HzhosH5AAfaxNwMjQ1O1LRqGGXDq9gvXajhfKKo"},
+        {"name": "Sneakers", "price": "$30", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVVgatS5fKfIlpNT2mOiX1_LWLeOIZcftC6lNdpuH0wu1LhEBhTma5codcxLj1"},
+        {"name": "Dress", "price": "$25", "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTS9g1kqKFomKko0gU9kw616E_1STTOsPqhJmGh4cwjBiIf3WO9H4YksyxUGVJM"},
+        {"name": "Co-ords", "price": "$28", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCZQXHjo_vmUlFVBurV9lsXcvJY_KfRgLu3Ws1VtTJ2hLiQd35BnNq-N6HA3_P"},
+        {"name": "Cap", "price": "$10", "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRx0BCEiZ8eFVtRPWCi5jj4bc6-OzSYg0M1OVl7G-F-HXv1UkHrtTjdM128LLjF"},
+        {"name": "Raincoat", "price": "$35", "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTYrapxQN__8FrwnzEvfBoIt5E-Y8BAukhPvTHpfYmudQwKU8dPtjG43noCQ08L"},
     ]
 }
 
