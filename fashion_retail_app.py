@@ -1,75 +1,83 @@
 import streamlit as st
 from PIL import Image
-import os
 
-# Directory containing the images
-IMAGE_DIR = 'images'
-
-# Sample product data
+# Sample data for products
 products = {
-    "Men": [
-        {"name": "Men's Shirt", "price": 25, "image": "men_shirt.jpg"},
-        {"name": "Men's Jeans", "price": 40, "image": "men_jeans.jpg"},
-        {"name": "Men's Jacket", "price": 60, "image": "men_jacket.jpg"},
-        {"name": "Men's Shoes", "price": 50, "image": "men_shoes.jpg"},
-        {"name": "Men's Hat", "price": 15, "image": "men_hat.jpg"},
-        {"name": "Men's Sunglasses", "price": 20, "image": "men_sunglasses.jpg"},
-        {"name": "Men's Belt", "price": 30, "image": "men_belt.jpg"},
-        {"name": "Men's Scarf", "price": 25, "image": "men_scarf.jpg"},
-        {"name": "Men's Gloves", "price": 18, "image": "men_gloves.jpg"},
-        {"name": "Men's Watch", "price": 75, "image": "men_watch.jpg"}
+    'Men': [
+        {'name': 'Leather Shoes', 'price': 100, 'image': 'images/men1.jpg'},
+        {'name': 'Denim Jacket', 'price': 120, 'image': 'images/men2.jpg'},
+        {'name': 'Formal Shirt', 'price': 70, 'image': 'images/men3.jpg'},
+        {'name': 'Chinos', 'price': 60, 'image': 'images/men4.jpg'},
+        {'name': 'Winter Coat', 'price': 200, 'image': 'images/men5.jpg'},
+        {'name': 'Sneakers', 'price': 90, 'image': 'images/men6.jpg'},
+        {'name': 'Casual Trousers', 'price': 55, 'image': 'images/men7.jpg'},
+        {'name': 'Sweater', 'price': 65, 'image': 'images/men8.jpg'},
+        {'name': 'Leather Belt', 'price': 30, 'image': 'images/men9.jpg'},
+        {'name': 'Sports Jacket', 'price': 110, 'image': 'images/men10.jpg'}
     ],
-    "Women": [
-        {"name": "Women's Dress", "price": 30, "image": "women_dress.jpg"},
-        {"name": "Women's Skirt", "price": 25, "image": "women_skirt.jpg"},
-        {"name": "Women's Jacket", "price": 35, "image": "women_jacket.jpg"},
-        {"name": "Women's Shoes", "price": 45, "image": "women_shoes.jpg"},
-        {"name": "Women's Bag", "price": 50, "image": "women_bag.jpg"},
-        {"name": "Women's Scarf", "price": 20, "image": "women_scarf.jpg"},
-        {"name": "Women's Gloves", "price": 22, "image": "women_gloves.jpg"},
-        {"name": "Women's Hat", "price": 18, "image": "women_hat.jpg"},
-        {"name": "Women's Jeans", "price": 40, "image": "women_jeans.jpg"},
-        {"name": "Women's Belt", "price": 30, "image": "women_belt.jpg"}
+    'Women': [
+        {'name': 'Summer Dress', 'price': 80, 'image': 'images/women1.jpg'},
+        {'name': 'High Heels', 'price': 90, 'image': 'images/women2.jpg'},
+        {'name': 'Blouse', 'price': 50, 'image': 'images/women3.jpg'},
+        {'name': 'Skirt', 'price': 45, 'image': 'images/women4.jpg'},
+        {'name': 'Winter Jacket', 'price': 150, 'image': 'images/women5.jpg'},
+        {'name': 'Handbag', 'price': 130, 'image': 'images/women6.jpg'},
+        {'name': 'Cardigan', 'price': 55, 'image': 'images/women7.jpg'},
+        {'name': 'Leggings', 'price': 40, 'image': 'images/women8.jpg'},
+        {'name': 'Sunglasses', 'price': 75, 'image': 'images/women9.jpg'},
+        {'name': 'Scarf', 'price': 25, 'image': 'images/women10.jpg'}
     ],
-    "Kids": [
-        {"name": "Kids' T-Shirt", "price": 15, "image": "kids_tshirt.jpg"},
-        {"name": "Kids' Shorts", "price": 20, "image": "kids_shorts.jpg"},
-        {"name": "Kids' Jacket", "price": 30, "image": "kids_jacket.jpg"},
-        {"name": "Kids' Shoes", "price": 25, "image": "kids_shoes.jpg"},
-        {"name": "Kids' Hat", "price": 10, "image": "kids_hat.jpg"},
-        {"name": "Kids' Sweater", "price": 28, "image": "kids_sweater.jpg"},
-        {"name": "Kids' Jeans", "price": 22, "image": "kids_jeans.jpg"},
-        {"name": "Kids' Scarf", "price": 12, "image": "kids_scarf.jpg"},
-        {"name": "Kids' Gloves", "price": 15, "image": "kids_gloves.jpg"},
-        {"name": "Kids' Boots", "price": 30, "image": "kids_boots.jpg"}
+    'Kids': [
+        {'name': 'T-Shirt', 'price': 20, 'image': 'images/kids1.jpg'},
+        {'name': 'Shorts', 'price': 25, 'image': 'images/kids2.jpg'},
+        {'name': 'Jacket', 'price': 45, 'image': 'images/kids3.jpg'},
+        {'name': 'Sneakers', 'price': 30, 'image': 'images/kids4.jpg'},
+        {'name': 'Dress', 'price': 35, 'image': 'images/kids5.jpg'},
+        {'name': 'Sweater', 'price': 28, 'image': 'images/kids6.jpg'},
+        {'name': 'Hat', 'price': 15, 'image': 'images/kids7.jpg'},
+        {'name': 'Gloves', 'price': 12, 'image': 'images/kids8.jpg'},
+        {'name': 'Leggings', 'price': 22, 'image': 'images/kids9.jpg'},
+        {'name': 'Raincoat', 'price': 40, 'image': 'images/kids10.jpg'}
     ]
 }
 
-# Function to load image
-def load_image(image_name):
-    image_path = os.path.join(IMAGE_DIR, image_name)
-    image = Image.open(image_path)
-    return image
+def display_products(category):
+    st.subheader(f"{category} Products")
+    for product in products[category]:
+        col1, col2 = st.columns([2, 1])
+        with col1:
+            st.image(product['image'], use_column_width=True)
+        with col2:
+            st.write(f"**{product['name']}**")
+            st.write(f"Price: ${product['price']}")
+            if st.button(f"Add {product['name']} to Cart", key=product['name']):
+                st.session_state.cart.append(product)
+                st.success(f"{product['name']} added to cart")
 
 def main():
-    st.title("Fashion and Retail Billing App")
+    st.title("Fashion Billing App")
+    st.sidebar.title("Categories")
+    
+    # Sidebar category selection
+    category = st.sidebar.selectbox("Select Category", ['Men', 'Women', 'Kids'])
+    
+    # Display products based on selected category
+    display_products(category)
+    
+    # Display Cart
+    if 'cart' not in st.session_state:
+        st.session_state.cart = []
 
-    # Sidebar for category selection
-    category = st.sidebar.selectbox("Select Category:", ["Men", "Women", "Kids"])
-
-    st.header(f"{category} Products")
-
-    # Display products
-    for product in products[category]:
-        col1, col2, col3 = st.columns([1, 2, 1])
-        with col1:
-            st.image(load_image(product["image"]), caption=product["name"], use_column_width=True)
-        with col2:
-            st.subheader(product["name"])
-            st.write(f"Price: ${product['price']}")
-        with col3:
-            if st.button("Add to Cart", key=product["name"]):
-                st.write(f"{product['name']} added to cart!")
+    if st.button("Show Cart"):
+        st.subheader("Cart")
+        if st.session_state.cart:
+            total_price = 0
+            for item in st.session_state.cart:
+                st.write(f"{item['name']} - ${item['price']}")
+                total_price += item['price']
+            st.write(f"**Total Price: ${total_price}**")
+        else:
+            st.write("Your cart is empty.")
 
 if __name__ == "__main__":
     main()
