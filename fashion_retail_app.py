@@ -55,7 +55,7 @@ def display_products(category):
                 st.success(f"{product['name']} added to cart")
 
 def main():
-    st.title("Fashion Retailing App")
+    st.title("Fashion and Retailing App")
     st.sidebar.title("Categories")
     
     # Sidebar category selection
