@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 
-# Sample data for products
+# Define product data
 products = {
     'Men': [
         {'name': 'Leather Shoes', 'price': 100, 'image': 'images/men1.jpg'},
@@ -55,7 +55,7 @@ def display_products(category):
                 st.success(f"{product['name']} added to cart")
 
 def main():
-    st.title("Fashion Billing App")
+    st.title("Fashion Retailing App")
     st.sidebar.title("Categories")
     
     # Sidebar category selection
