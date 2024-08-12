@@ -1,83 +1,67 @@
 import streamlit as st
-from PIL import Image
 
-# Define product data
+# Sample data for products
 products = {
-    'Men': [
-        {'name': 'Leather Shoes', 'price': 100, 'image': 'images/men1.jpg'},
-        {'name': 'Denim Jacket', 'price': 120, 'image': 'images/men2.jpg'},
-        {'name': 'Formal Shirt', 'price': 70, 'image': 'images/men3.jpg'},
-        {'name': 'Chinos', 'price': 60, 'image': 'images/men4.jpg'},
-        {'name': 'Winter Coat', 'price': 200, 'image': 'images/men5.jpg'},
-        {'name': 'Sneakers', 'price': 90, 'image': 'images/men6.jpg'},
-        {'name': 'Casual Trousers', 'price': 55, 'image': 'images/men7.jpg'},
-        {'name': 'Sweater', 'price': 65, 'image': 'images/men8.jpg'},
-        {'name': 'Leather Belt', 'price': 30, 'image': 'images/men9.jpg'},
-        {'name': 'Sports Jacket', 'price': 110, 'image': 'images/men10.jpg'}
+    "Men": [
+        {"name": "Leather Jacket", "price": "$120", "image": "https://via.placeholder.com/150?text=Leather+Jacket"},
+        {"name": "Casual Shirt", "price": "$30", "image": "https://via.placeholder.com/150?text=Casual+Shirt"},
+        {"name": "Running Shoes", "price": "$75", "image": "https://via.placeholder.com/150?text=Running+Shoes"},
+        {"name": "Jeans", "price": "$50", "image": "https://via.placeholder.com/150?text=Jeans"},
+        {"name": "Wool Sweater", "price": "$60", "image": "https://via.placeholder.com/150?text=Wool+Sweater"},
+        {"name": "Shorts", "price": "$25", "image": "https://via.placeholder.com/150?text=Shorts"},
+        {"name": "Dress Shirt", "price": "$40", "image": "https://via.placeholder.com/150?text=Dress+Shirt"},
+        {"name": "Blazer", "price": "$150", "image": "https://via.placeholder.com/150?text=Blazer"},
+        {"name": "Boots", "price": "$85", "image": "https://via.placeholder.com/150?text=Boots"},
+        {"name": "Sweatpants", "price": "$35", "image": "https://via.placeholder.com/150?text=Sweatpants"},
     ],
-    'Women': [
-        {'name': 'Summer Dress', 'price': 80, 'image': 'images/women1.jpg'},
-        {'name': 'High Heels', 'price': 90, 'image': 'images/women2.jpg'},
-        {'name': 'Blouse', 'price': 50, 'image': 'images/women3.jpg'},
-        {'name': 'Skirt', 'price': 45, 'image': 'images/women4.jpg'},
-        {'name': 'Winter Jacket', 'price': 150, 'image': 'images/women5.jpg'},
-        {'name': 'Handbag', 'price': 130, 'image': 'images/women6.jpg'},
-        {'name': 'Cardigan', 'price': 55, 'image': 'images/women7.jpg'},
-        {'name': 'Leggings', 'price': 40, 'image': 'images/women8.jpg'},
-        {'name': 'Sunglasses', 'price': 75, 'image': 'images/women9.jpg'},
-        {'name': 'Scarf', 'price': 25, 'image': 'images/women10.jpg'}
+    "Women": [
+        {"name": "Summer Dress", "price": "$80", "image": "https://via.placeholder.com/150?text=Summer+Dress"},
+        {"name": "High Heels", "price": "$60", "image": "https://via.placeholder.com/150?text=High+Heels"},
+        {"name": "Blouse", "price": "$45", "image": "https://via.placeholder.com/150?text=Blouse"},
+        {"name": "Skirt", "price": "$35", "image": "https://via.placeholder.com/150?text=Skirt"},
+        {"name": "Cardigan", "price": "$50", "image": "https://via.placeholder.com/150?text=Cardigan"},
+        {"name": "Leggings", "price": "$40", "image": "https://via.placeholder.com/150?text=Leggings"},
+        {"name": "Coat", "price": "$120", "image": "https://via.placeholder.com/150?text=Coat"},
+        {"name": "Tank Top", "price": "$20", "image": "https://via.placeholder.com/150?text=Tank+Top"},
+        {"name": "Sweater Dress", "price": "$70", "image": "https://via.placeholder.com/150?text=Sweater+Dress"},
+        {"name": "Chinos", "price": "$55", "image": "https://via.placeholder.com/150?text=Chinos"},
     ],
-    'Kids': [
-        {'name': 'T-Shirt', 'price': 20, 'image': 'images/kids1.jpg'},
-        {'name': 'Shorts', 'price': 25, 'image': 'images/kids2.jpg'},
-        {'name': 'Jacket', 'price': 45, 'image': 'images/kids3.jpg'},
-        {'name': 'Sneakers', 'price': 30, 'image': 'images/kids4.jpg'},
-        {'name': 'Dress', 'price': 35, 'image': 'images/kids5.jpg'},
-        {'name': 'Sweater', 'price': 28, 'image': 'images/kids6.jpg'},
-        {'name': 'Hat', 'price': 15, 'image': 'images/kids7.jpg'},
-        {'name': 'Gloves', 'price': 12, 'image': 'images/kids8.jpg'},
-        {'name': 'Leggings', 'price': 22, 'image': 'images/kids9.jpg'},
-        {'name': 'Raincoat', 'price': 40, 'image': 'images/kids10.jpg'}
+    "Kids": [
+        {"name": "T-Shirt", "price": "$15", "image": "https://via.placeholder.com/150?text=T-Shirt"},
+        {"name": "Jeans", "price": "$25", "image": "https://via.placeholder.com/150?text=Jeans"},
+        {"name": "Sweater", "price": "$20", "image": "https://via.placeholder.com/150?text=Sweater"},
+        {"name": "Jacket", "price": "$40", "image": "https://via.placeholder.com/150?text=Jacket"},
+        {"name": "Shorts", "price": "$18", "image": "https://via.placeholder.com/150?text=Shorts"},
+        {"name": "Sneakers", "price": "$30", "image": "https://via.placeholder.com/150?text=Sneakers"},
+        {"name": "Dress", "price": "$25", "image": "https://via.placeholder.com/150?text=Dress"},
+        {"name": "Overalls", "price": "$28", "image": "https://via.placeholder.com/150?text=Overalls"},
+        {"name": "Cap", "price": "$10", "image": "https://via.placeholder.com/150?text=Cap"},
+        {"name": "Raincoat", "price": "$35", "image": "https://via.placeholder.com/150?text=Raincoat"},
     ]
 }
 
 def display_products(category):
     st.subheader(f"{category} Products")
     for product in products[category]:
-        col1, col2 = st.columns([2, 1])
+        col1, col2 = st.columns([1, 2])
         with col1:
-            st.image(product['image'], use_column_width=True)
+            st.image(product["image"], caption=product["name"], width=150)
         with col2:
-            st.write(f"**{product['name']}**")
-            st.write(f"Price: ${product['price']}")
-            if st.button(f"Add {product['name']} to Cart", key=product['name']):
-                st.session_state.cart.append(product)
-                st.success(f"{product['name']} added to cart")
+            st.write(f"**Name:** {product['name']}")
+            st.write(f"**Price:** {product['price']}")
+        st.write("")
 
 def main():
-    st.title("Fashion and Retailing App")
-    st.sidebar.title("Categories")
-    
-    # Sidebar category selection
-    category = st.sidebar.selectbox("Select Category", ['Men', 'Women', 'Kids'])
-    
+    st.title("Fashion and Retail App")
+
+    # Sidebar for category selection
+    category = st.sidebar.selectbox(
+        "Select Category",
+        ["Men", "Women", "Kids"]
+    )
+
     # Display products based on selected category
     display_products(category)
-    
-    # Display Cart
-    if 'cart' not in st.session_state:
-        st.session_state.cart = []
-
-    if st.button("Show Cart"):
-        st.subheader("Cart")
-        if st.session_state.cart:
-            total_price = 0
-            for item in st.session_state.cart:
-                st.write(f"{item['name']} - ${item['price']}")
-                total_price += item['price']
-            st.write(f"**Total Price: ${total_price}**")
-        else:
-            st.write("Your cart is empty.")
 
 if __name__ == "__main__":
     main()
