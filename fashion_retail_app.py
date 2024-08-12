@@ -29,8 +29,7 @@ products = {
     "Kids": [
         {"name": "T-Shirt", "price": "$15", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdyMcqxjR06z9RXBLPLQHlebdejrS58cWZhETp-DuoaF5gyjXKvHXbnNNQdzqt"},
         {"name": "Jeans", "price": "$25", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDtb-nUnHg0FBhISoK1z98AGyKnprk-e2KXSIW3N9ZM9Yh-jj50Pqrjd_vzJIY"},
-        {"name": "Sweater", "price": "$20", "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRP2MKyd52vzTvOi_x9psrYkTeJ56Y-urARQKX4OwNstdfoFRJ47ildsFdpuTXm"
-        },
+        {"name": "Sweater", "price": "$20", "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRP2MKyd52vzTvOi_x9psrYkTeJ56Y-urARQKX4OwNstdfoFRJ47ildsFdpuTXm" },
         {"name": "Jacket", "price": "$40", "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSyB1Nh_4GOHuQda8EMSnVDsQyiT1VXWA_pvqZVHg4fzJasoB8sSX72PeFxOuIb"},
         {"name": "Shorts", "price": "$18", "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSOK2gd7Ha7Y3IOaK5NdNhC0HzhosH5AAfaxNwMjQ1O1LRqGGXDq9gvXajhfKKo"},
         {"name": "Sneakers", "price": "$30", "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVVgatS5fKfIlpNT2mOiX1_LWLeOIZcftC6lNdpuH0wu1LhEBhTma5codcxLj1"},
